@@ -1,0 +1,17 @@
+name: build docker
+on:
+  - push
+env:
+  # https://hub.docker.com/r/homeassistant/home-assistant/tags
+  VERSION: "2022.6.7"
+  IMAGE_REPO: "bennycooly/home-assistant"
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          docker build \
+            --build-arg VERSION="${VERSION}" \
+            -t "${IMAGE_REPO}:${VERSION}" \
+            -f Dockerfile \
+            .
