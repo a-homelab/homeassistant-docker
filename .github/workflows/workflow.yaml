@@ -29,3 +29,5 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/home-assistant:${{ env.VERSION }}
+          build-args: |
+            VERSION=${{ env.VERSION }}
